@@ -1,18 +1,22 @@
 #ifndef RED_H
 #define RED_H
 #include<enrutador.h>
-
+#include<map>
 
 class red
 {
 private:
-    enrutador Enrutadores[10]={};
+    map<char,enrutador> Enrutadores;
+    string nombre;
 
 public:
-    red();
-    red(enrutador a, enrutador b, enrutador c, enrutador d);
+    red(string nombre);
     void AgregarEnrutador(enrutador n);
-    void EliminarEnrutador(char n);
+    void EliminarEnrutador(char n);//char
+    void VerEnrutadores();
+    void VerTablaEnlaces();
+    void obtenerEnrutador();
+
 
 };
 

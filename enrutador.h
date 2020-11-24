@@ -2,6 +2,7 @@
 #define ENRUTADOR_H
 #include<string>
 #include<iostream>
+#include<map>
 
 using namespace std;
 
@@ -10,16 +11,16 @@ class enrutador//topologia
 
 private:
     char nombre=' ';
-    int conex[10]={};
+    map<char,int> conex;
 
 public:
     enrutador();
-    enrutador(char nom, int v1, int v2, int v3);//valores enrutadores conectados
+    enrutador(char nom);//valores enrutadores conectados
     char getNombre();
-    int* getCostos();
-    void EliminarEnrutador(int pos);
-    void AgregarEnrutador(int pos, int valor);
-    void CambiarCosto(int pos, int valor);
+    map<char,int> getEnlaces();
+    void EliminarEnlace(char n);
+    void AgregarEnlace(char n, int valor);
+    void CambiarCosto(char n, int valor);
 
 
 };

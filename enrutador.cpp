@@ -7,52 +7,46 @@ enrutador::enrutador(){
        this->nombre=' ';
 }
 
-enrutador::enrutador(char nom, int v1, int v2, int v3){
+enrutador::enrutador(char nom){
     this->nombre=nom;
-    this->conex[0]=0;
-    this->conex[1]=v1;
-    this->conex[2]=v2;
-    this->conex[3]=v3;
-    this->conex[4]=-1;
-    this->conex[5]=-1;
-    this->conex[6]=-1;
-    this->conex[7]=-1;
-    this->conex[8]=-1;
-    this->conex[9]=-1;
+    this->conex[nom]=0;
+
 }
 
 char enrutador::getNombre(){
     return this->nombre;
 }
 
-int* enrutador::getCostos(){
+map<char,int> enrutador::getEnlaces(){
     return this->conex;
 }
 
-void enrutador::EliminarEnrutador(int pos){
-    if(conex[pos]==-1){
-        cout <<"El enrutador no existe."<<endl;
+void enrutador::EliminarEnlace(char n){
+    if(conex.find(n)==conex.end()){//no existe el enrutador
+        cout<<"el enlace no se encuentra en el enrutador.";
     }
     else{
-        this->conex[pos]=-1;//elimina el enrutador
+        conex.erase(n);
+
     }
 
 }
-void enrutador::AgregarEnrutador(int pos, int valor){
-    if(conex[pos]==-1){
-        this->conex[pos]=valor;
+void enrutador::AgregarEnlace(char n, int valor){
+    if(conex.find(n)==conex.end()){//no existe el enrutador
+        this->conex[n]=valor;
     }
     else{
-        cout <<"El enrutador ya existe."<<endl;
+        cout<<"el enlace ya se encuentra en el enrutador.";
     }
 }
 
-void enrutador::CambiarCosto(int pos, int valor){
-    if(conex[pos]==-1){
-        cout <<"El enrutador no existe."<<endl;
+void enrutador::CambiarCosto(char n, int valor){
+    if(conex.find(n)==conex.end()){//no existe el enrutador
+        cout<<"el enlace no se encuentra en el enrutador.";
+
     }
     else{
-        this->conex[pos]=valor;
+        this->conex[n]=valor;
     }
 
 
